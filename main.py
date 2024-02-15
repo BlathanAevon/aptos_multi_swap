@@ -6,11 +6,14 @@ from pancakeswap.client import PancakeSwapClient
 from liquidswap.client import LiquidSwapClient
 from config import (
     node_url,
-    APTOSWAP_MAPPING,
     DEFAULT_MAPPING,
     show_balance_before_swap,
     show_balance_after_swap,
-)
+    amount_APT_from ,
+    amount_APT_to ,
+    amount_USDT_from ,
+    amount_USDT_to,
+    loops)
 from config import is_sleep, sleep_from, sleep_to, randomize_wallets, randomize_modules
 
 
@@ -87,22 +90,24 @@ def liquidswap_swap(wallet, from_token, to_token, from_amount, to_amount):
 
 
 if __name__ == "__main__":
-    # Можно убрать какой-то из модулей по-желанию
-    modules = [liquidswap_swap, pancakeswap_swap, aptoswap_swap]
-    # Кол-во прогонов всех кошельков по модулям где кол-во транз = 1 прогон * 3 модуля т.е 50 прогонов = 150 транз на каждом кошельке
-    loops = 50
 
+    modules = [liquidswap_swap, pancakeswap_swap]
+    
     with open("wallets.txt", "r", encoding="utf-8-sig") as file:
         wallets = [line.strip() for line in file]
 
-    if randomize_wallets:
-        random.shuffle(wallets)
-
-    if randomize_modules:
-        random.shuffle(modules)
-
     for _ in range(loops):
+        
+        logger.warning("Мешаю кошельки...")
+        if randomize_wallets:
+            random.shuffle(wallets)
+            
         for wallet in wallets:
+            
+            logger.warning("Мешаю модули...")
+            if randomize_modules:
+                random.shuffle(modules)
+                
             for module in modules:
-                module(wallet, "APT", "USDT", 0.01, 0.011)
-                module(wallet, "USDT", "APT", 0.06, 0.065)
+                module(wallet, "APT", "USDT", amount_APT_from, amount_APT_to)
+                module(wallet, "USDT", "APT", amount_USDT_from, amount_USDT_to)

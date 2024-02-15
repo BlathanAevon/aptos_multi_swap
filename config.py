@@ -27,13 +27,13 @@ randomize_modules = True
 # Количество секунд паузы между кошельками
 sleep_from = 20
 sleep_to = 50
+loops = 20
 
-# Кол-во от/до для свапа из Aptos в USDT или в USDC
+# Кол-во от/до для свапа из Aptos в USDT
 amount_APT_from = 0.005
 amount_APT_to = 0.0051
-# Кол-во от/до для свапа из USDT в APT или в USDC
+# Кол-во от/до для свапа из USDT в APT
 amount_USDT_from = 0.06
 amount_USDT_to = 0.07
-# Кол-во от/до для свапа из USDC в USDT или в APT
-amount_USDC_from = 0.06
-amount_USDC_to = 0.07
+
+
