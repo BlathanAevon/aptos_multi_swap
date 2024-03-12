@@ -24,11 +24,11 @@
     **Windows:**
 
     ```powershell
-    ./run.bat
+    .\scripts\run.bat
     ```
 
     **Linux, MacOS, FreeBSD:**
     
     ```bash
-    ./run.sh
+    ./scripts/run.sh
     ```
