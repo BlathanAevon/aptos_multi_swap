@@ -1,14 +1,34 @@
 # aptos_multi_swap
 
-Скрипт для свапов в сети Aptos с использованием 3 DEX
+* Python script to use 2 DEX (PancakeSwap, LiquidSwap) on `Aptos`
 
-В пулах мало ликвидности, могут быть ошибки и большие потери на свапах. **Лучше этот dex не юзать**, 
-максимум 1-2 свапа для +1 контракта на кошелек
 
-#### Установка зависимостей: ```pip install -r requirements.txt```
+## How to install and run: 
 
-- `wallet.txt` для ввода приватников
-- `config.py`  дефолтные настройки, также можно настроить время ожидания между кошельками, включить рандомизацию кошельков
-- `tokens_mapping` в `config.py` используется для мапинга токенов (если вам надо какой-то еще, то просто добавьте
-  удобное для вас название и адрес нового токена)
+1. Clone the repository:
 
+     ```bash
+     git clone https://github.com/BlathanAevon/aptos_multi_swap.git
+     ```
+
+2. Go into the repository:
+
+   ```bash
+    cd aptos_multi_swap
+   ````
+
+3. Put `Aptos` private keys into `wallets.txt`
+4. Set preferable settings in `settings.py`
+5. Run the script:
+
+    **Windows:**
+
+    ```powershell
+    ./run.bat
+    ```
+
+    **Linux, MacOS, FreeBSD:**
+    
+    ```bash
+    ./run.sh
+    ```

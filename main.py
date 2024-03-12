@@ -1,7 +1,6 @@
 import random
 import time
 from loguru import logger
-from aptoswap.client import AptoSwap
 from pancakeswap.client import PancakeSwapClient
 from liquidswap.client import LiquidSwapClient
 from config import (
@@ -16,9 +15,7 @@ from config import (
     loops)
 from config import is_sleep, sleep_from, sleep_to, randomize_wallets, randomize_modules
 
-
-# TOKENS: USDT, APT
-def pancakeswap_swap(wallet, from_token, to_token, from_amount, to_amount):
+def pancakeswap_swap(wallet: str, from_token: str, to_token: str, from_amount: float, to_amount: float) -> None:
     pancakeswap_client = PancakeSwapClient(node_url, DEFAULT_MAPPING, wallet)
     pancakeswap_client.client_config.max_gas_amount = 5_000
 
@@ -53,8 +50,7 @@ def pancakeswap_swap(wallet, from_token, to_token, from_amount, to_amount):
         logger.error(f"Непредвиденная ошибка")
 
 
-# TOKENS: USDT, APT
-def liquidswap_swap(wallet, from_token, to_token, from_amount, to_amount):
+def liquidswap_swap(wallet: str, from_token: str, to_token: str, from_amount: float, to_amount: float) -> None:
     liquidswap_client = LiquidSwapClient(node_url, DEFAULT_MAPPING, wallet)
     liquidswap_client.client_config.max_gas_amount = 5_000
 
